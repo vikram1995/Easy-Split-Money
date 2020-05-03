@@ -6,11 +6,13 @@ const homePage = (props) => {
         <div className="welcome-page">
                     <div className="row">
                         <div className="col-6">
-                            <button type="button" className="btn btn-lg btn-success" value="signIn" onClick= {props.click}>Sign In</button>
+                            <a className="btn btn-lg btn-success" href="/login" role="button">Sign In</a>
+                            
                         </div>
                                 
                         <div className="col-6">
-                            <button type="button" className="btn btn-lg btn-secondary" value="signUp" onClick= {props.click}>Sign Up</button>
+                        <a className="btn btn-lg btn-secondary" href="/signUp" role="button">Sign Up</a>
+                            
                         </div>
                     </div>
 

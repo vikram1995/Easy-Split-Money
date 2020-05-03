@@ -28,7 +28,8 @@ class loginForm extends Component{
             this.setState({
                 errorDisp: false
             })
-            this.props.mainPageStatus();
+            window.location.pathname = "/dashBoard"
+            
         }
 
         else{
@@ -37,7 +38,7 @@ class loginForm extends Component{
                 errorDisp: true
             })
         }
-
+        
     }
 
     render(){
