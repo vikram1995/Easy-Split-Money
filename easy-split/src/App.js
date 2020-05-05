@@ -2,13 +2,10 @@ import React,{Component} from 'react';
 
 import './App.css';
 import './style/style.css';
-import WelcomePage from './modules/WelcomePage/welcomePage';
+import WelcomePage from './components/WelcomePage/welcomePage';
 
 
 class App extends Component {
-
-
-
   render(){
     
 

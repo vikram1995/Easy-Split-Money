@@ -56,7 +56,7 @@ onSubmitHandler(event){
             gender:""
         });
         
-        this.props.welcomePageState();
+        window.location.pathname = "/"
         alert("All saved successfully !")
     }
 
@@ -76,23 +76,23 @@ onSubmitHandler(event){
                         <div className="form-group">
                             <div className="form-row" >
                                 <div className="col-6">
-                                        <input className="form-control" type="text" id="firstName" name="firstName" placeholder="First name " required="true" onChange={this.onChangehandler.bind(this)} value= {this.state.firstName}/>
+                                        <input className="form-control" type="text" id="firstName" name="firstName" placeholder="First name " required={true} onChange={this.onChangehandler.bind(this)} value= {this.state.firstName}/>
                                 </div>
     
                                 <div className="col-6">
-                                        <input className="form-control" type="text" id="lastName" name="lastName" placeholder="Last name " required="true" onChange={this.onChangehandler.bind(this)} value= {this.state.lastName} />
+                                        <input className="form-control" type="text" id="lastName" name="lastName" placeholder="Last name " required={true} onChange={this.onChangehandler.bind(this)} value= {this.state.lastName} />
                                 </div>
                             </div>
                             <br/>
                                 <div className="form-row">
                                     <div className="col-12">
-                                        <input className="form-control" type="text" id="userName" name="userName" required="true" placeholder="Mobile number or email address" onChange={this.onChangehandler.bind(this)} value= {this.state.userName}/>
+                                        <input className="form-control" type="text" id="userName" name="userName" required={true} placeholder="Mobile number or email address" onChange={this.onChangehandler.bind(this)} value= {this.state.userName}/>
                                     </div>
                                 </div>
                                 <br/>
                                 <div className="form-row">
                                     <div className="col-12">
-                                        <input className="form-control" type="text" id="password" name="password" placeholder="New password" required="true" onChange={this.onChangehandler.bind(this)} value= {this.state.password} />
+                                        <input className="form-control" type="text" id="password" name="password" placeholder="New password" required={true} onChange={this.onChangehandler.bind(this)} value= {this.state.password} />
                                     </div>
                                 </div>
                                 <br/>
@@ -105,7 +105,7 @@ onSubmitHandler(event){
                                 <div className="form-row">
                                     <div className="col-6">
                                         <label htmlFor="date-of-birth">Date of Birth</label>
-                                        <input className="form-control" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="" required="true" onChange={this.onChangehandler.bind(this)} value= {this.state.dateOfBirth} />
+                                        <input className="form-control" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="" required={true} onChange={this.onChangehandler.bind(this)} value= {this.state.dateOfBirth} />
                                     </div>
                                 </div>
                                 <br/>
@@ -113,7 +113,7 @@ onSubmitHandler(event){
                                     <div className="col-6">
                                         <p>Gender</p>
                                         <div className="form-check form-check-inline">
-                                            <input className="form-check-input" type="radio" name="gender" id="inlineRadio1"  value="male" required/>
+                                            <input className="form-check-input" type="radio" name="gender" id="inlineRadio1"  value="male" required={true}/>
                                             <label className="form-check-label" htmlFor="inlineRadio1">Male</label>
                                         </div>
                                         <div className="form-check form-check-inline">
