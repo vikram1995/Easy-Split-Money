@@ -1,11 +1,28 @@
 import React , {Component} from 'react';
-import Dashboard  from "./dashboard";
+import Dashboard  from "./mainContent";
+import './mainPageStyle.css';
+
+import Menu from './menu';
+import Update from './update';
+import MainContent from './mainContent';
 
 class MainPage extends Component{
+
+
+    
+
     render(){
         return(<div>
-                    <Dashboard/>
+                     <div className="content-wrapper container-fluid">
+            
+                        <Menu/>
+                        <MainContent/>
+                        <Update/>
+
+                        
+
                     
+                     </div>
                 </div>
         
             )

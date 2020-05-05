@@ -18,7 +18,10 @@ class WelcomePage extends Component {
         "/": <HomePage />,
         "/login" : <LoginForm />,
         "/signUp" : <SignUpForm />,
-        "/dashBoard": <MainPage/>
+        "/main-page": <MainPage/>,
+        "/main-page/dashboard":<MainPage/>,
+        "/main-page/recent-activity":<MainPage/>,
+        "/main-page/expenses":<MainPage/>
    }  
   
 
