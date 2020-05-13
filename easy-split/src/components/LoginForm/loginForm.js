@@ -28,7 +28,7 @@ class loginForm extends Component{
             this.setState({
                 errorDisp: false
             })
-            window.location.pathname = "/dashBoard"
+            window.location.pathname = "/main-page"
             
         }
 
