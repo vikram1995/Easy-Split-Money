@@ -3,11 +3,18 @@ import {Modal, Form, Button,Row,Col} from 'react-bootstrap';
 
 class SettelUp extends Component{
 
-    friends = ["Rahul", "Swapnil", "Subham"]
     
+    state={
+        friends:[]
+    }
 
     render(){
-
+        fetch('http://localhost:4000/friends').then(resp=> resp.json())
+        .then(data=>{
+            
+            this.setState({friends:data})
+            
+        });
         
         return(
             <div>
@@ -26,7 +33,7 @@ class SettelUp extends Component{
                             </Form.Label>
                             <Col sm={8}>
                             <Form.Control as="select" custom>
-                            {this.friends.map((element)=>{
+                            {this.state.friends.map((element)=>{
                             return(<option>
                             {element}
                                 </option>)

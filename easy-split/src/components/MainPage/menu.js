@@ -1,11 +1,33 @@
-import React from 'react';
+import React,{Component} from 'react';
 
 
-const menu  = () =>{
+class menu extends Component {
 
-    let groups =["Room Mates", "classmates"] ;
+state = {
+    friends:[],
+    groups:[]
+}
 
-    let friends = ["Rahul", "Swapnil", "Subham"]
+    render(){
+
+      
+
+        fetch('http://localhost:4000/groups').then(resp=> resp.json())
+        .then(data=>{
+            
+            this.setState({groups:data})
+            
+        });
+        fetch('http://localhost:4000/friends').then(resp=> resp.json())
+        .then(data=>{
+            
+            this.setState({friends:data})
+            
+        });
+
+    
+
+    
     
     return(
     <div className='menu'>
@@ -23,7 +45,7 @@ const menu  = () =>{
 
             </thead>
             <tbody>
-                {groups.map((element)=>{
+                {this.state.groups.map((element)=>{
                     return(<tr>
                             {element}
                         </tr>)
@@ -39,7 +61,7 @@ const menu  = () =>{
 
             </thead>
             <tbody>
-                {friends.map((element)=>{
+                {this.state.friends.map((element)=>{
                     return(<tr>
                             {element}
                         </tr>)
@@ -49,6 +71,7 @@ const menu  = () =>{
     </table>
 </div>
 )
+}
 }
 
 export default menu;
