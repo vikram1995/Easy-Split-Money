@@ -1,17 +1,21 @@
 import React,{Component} from 'react';
 import ErrorMsg from '../errorMsg/errorMsg';
 
+
 class loginForm extends Component{
 
     state = {
         username: "",
         password: "",
-        errorDisp: false
+        errorDisp: false,
+        login:false
         
     }
 
+
     username = "vikram";
     password = "123";
+    
     handleChange(event){
         
       this.setState({
@@ -20,15 +24,37 @@ class loginForm extends Component{
       })
 
     }
+
+    
+
     onSubmitHandler(event){
         event.preventDefault();
-        if(this.state.username === this.username && this.state.password === this.password.toString())
+
+        fetch('http://localhost:4000/login',{
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                     {
+                        username: this.state.username,
+                        password: this.state.password
+                    }
+                )
+            }).then(resp=> resp.json()).then(data =>{
+                this.setState({login:data.login});
+                console.log(data);
+            })
+//this.state.username === this.username && this.state.password === this.password.toString()
+
+        if( this.state.login)
         {
             console.log("login successful");
             this.setState({
                 errorDisp: false
             })
-            window.location.pathname = "/main-page"
+            window.location.pathname = "/main-page/dashboard"
             
         }
 
@@ -42,12 +68,15 @@ class loginForm extends Component{
     }
 
     render(){
+
+        
+
         return(
             <div className="signUpForm">
                 <h1>Sign In</h1>
                 {this.state.errorDisp ? <ErrorMsg message={"wrong username or password"}/> : null}
 
-                <form action="" method="" onSubmit={this.onSubmitHandler.bind(this)}>
+                <form action="" method="POST" enctype="multipart/form-data" onSubmit={this.onSubmitHandler.bind(this)}>
                     <div className="form-group">
                         
                          
