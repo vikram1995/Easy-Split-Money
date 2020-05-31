@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Modal, Form, Button,Row,Col} from 'react-bootstrap';
+import {Modal, Form, Button,Col} from 'react-bootstrap';
 
 class SettelUp extends Component{
 

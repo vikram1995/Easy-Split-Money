@@ -16,7 +16,7 @@ const nav = (props) =>{
          linkText = "Sign In"
     }
     
-    const logView = props.registered ? props.signInToUp : props.signUptoIn;
+    
 
 return(
     <div>

@@ -32,41 +32,41 @@ class loginForm extends Component{
 
         fetch('http://localhost:4000/login',{
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 
+                    "Content-type": "application/json; charset=UTF-8"
+                } ,
+                
                 body: JSON.stringify(
                      {
                         username: this.state.username,
                         password: this.state.password
                     }
                 )
-            }).then(resp=> resp.json()).then(data =>{
+            }).then(resp=> resp.json()).then(data=>{
                 this.setState({login:data.login});
-                console.log(data);
-            })
-//this.state.username === this.username && this.state.password === this.password.toString()
-
-        if( this.state.login)
-        {
-            console.log("login successful");
-            this.setState({
-                errorDisp: false
-            })
-            window.location.pathname = "/main-page/dashboard"
-            
-        }
-
-        else{
-            console.log("login failed");
-            this.setState({
-                errorDisp: true
-            })
-        }
+                if( this.state.login)
+                {
+                    console.log("login successful");
+                    this.setState({
+                        errorDisp: false
+                    })
+                    window.location.pathname = "/main-page/dashboard"
+                    
+                }
         
-    }
+                else{
+                    console.log("login failed");
+                    this.setState({
+                        errorDisp: true
+                    })
+                }
+                
+            }
+        
+          );
 
+        }
+       
     render(){
 
         
@@ -76,7 +76,7 @@ class loginForm extends Component{
                 <h1>Sign In</h1>
                 {this.state.errorDisp ? <ErrorMsg message={"wrong username or password"}/> : null}
 
-                <form action="" method="POST" enctype="multipart/form-data" onSubmit={this.onSubmitHandler.bind(this)}>
+                <form onSubmit={this.onSubmitHandler.bind(this)}>
                     <div className="form-group">
                         
                          
