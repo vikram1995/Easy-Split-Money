@@ -21,18 +21,20 @@ class Expences extends Component {
    
 
 
- 
-
- 
-
-  render(){
-
+ componentDidMount(){
     fetch('http://localhost:4000/expenses').then(resp=> resp.json())
      .then(data=>{
          
          this.setState({exp:data})
          
      });
+ }
+
+ 
+
+  render(){
+
+    
     return(
                 <div>
                     <div className="heading">

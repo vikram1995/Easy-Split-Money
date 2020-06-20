@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import Dashboard  from "./mainContent";
+
 import './mainPageStyle.css';
 
 import Menu from './menu';

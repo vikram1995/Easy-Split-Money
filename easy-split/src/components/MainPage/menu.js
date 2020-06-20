@@ -1,17 +1,44 @@
 import React,{Component} from 'react';
-
+import AddFriends from './components/AddFriends/AddFriends';
 
 class menu extends Component {
 
 state = {
     friends:[],
-    groups:[]
+    groups:[],
+    addFriend:false,
+    stateChange:false
 }
 
-    render(){
+     handleAddfriendShow = () => this.setState({addFriend: true});
+     handleAddfriendClose = () => this.setState({addFriend: false});
 
-      
+     changeState(){
+         let stateChange = !this.state.stateChange
+         this.setState({stateChange: stateChange});
+         alert("state is changed");
+     }
 
+     componentDidUpdate(prevProps,prevState){
+        
+         if(prevState.stateChange !== this.state.stateChange){
+            
+            fetch('http://localhost:4000/groups').then(resp=> resp.json())
+            .then(data=>{
+                
+                this.setState({groups:data})
+                
+            });
+            fetch('http://localhost:4000/friends').then(resp=> resp.json())
+            .then(data=>{
+                
+                this.setState({friends:data})
+                
+            });   
+         }
+     }
+
+     componentDidMount(){
         fetch('http://localhost:4000/groups').then(resp=> resp.json())
         .then(data=>{
             
@@ -24,10 +51,11 @@ state = {
             this.setState({friends:data})
             
         });
+     }
 
-    
+    render(){
 
-    
+       
     
     return(
     <div className='menu'>
@@ -40,7 +68,7 @@ state = {
     <table className="table">
             <thead className="thead-dark">
                 <tr>
-                    <th scope="col">Groups <span><ion-icon name="add-outline"></ion-icon>Add</span></th>
+                    <th scope="col">Groups <span className="add"><ion-icon name="add-outline"></ion-icon>Add</span></th>
                 </tr>
 
             </thead>
@@ -56,7 +84,7 @@ state = {
     <table className="table">
             <thead className="thead-dark">
                 <tr>
-                    <th scope="col">Friends <span><ion-icon name="add-outline"></ion-icon>Add</span></th>
+                    <th scope="col">Friends <span className="add" onClick={this.handleAddfriendShow}><ion-icon name="add-outline"></ion-icon>Add</span></th>
                 </tr>
 
             </thead>
@@ -69,6 +97,7 @@ state = {
                 
             </tbody>
     </table>
+    <AddFriends handleShow = {this.handleAddfriendShow.bind(this)} handleClose = {this.handleAddfriendClose.bind(this)} show={this.state.addFriend} changeState = {this.changeState.bind(this)}/>
 </div>
 )
 }

@@ -1,4 +1,4 @@
-import React,{ Component, useState} from "react";
+import React,{ Component} from "react";
 import './mainPageStyle.css';
 import Dashboard from './components/dashboard/dashboard';
 import RecentActivity from './components/RecentActivity/recentActivity';

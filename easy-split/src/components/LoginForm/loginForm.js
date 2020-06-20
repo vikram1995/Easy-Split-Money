@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import ErrorMsg from '../errorMsg/errorMsg';
+import data from '../test.json';
 
 
 class loginForm extends Component{
@@ -11,13 +12,9 @@ class loginForm extends Component{
         login:false
         
     }
-
-
-    username = "vikram";
-    password = "123";
     
     handleChange(event){
-        
+        console.log("onChange trigger");
       this.setState({
           [event.target.id] : event.target.value
           
@@ -26,47 +23,52 @@ class loginForm extends Component{
     }
 
     
+    
 
     onSubmitHandler(event){
         event.preventDefault();
-
+        data.push(JSON.stringify({
+          name:"rahul",
+          password: "123"  
+        }))
+        console.log(data);
         fetch('http://localhost:4000/login',{
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 
+                    "Content-type": "application/json; charset=UTF-8"
+                } ,
+                
                 body: JSON.stringify(
                      {
                         username: this.state.username,
                         password: this.state.password
                     }
                 )
-            }).then(resp=> resp.json()).then(data =>{
+            }).then(resp=> resp.json()).then(data=>{
                 this.setState({login:data.login});
-                console.log(data);
-            })
-//this.state.username === this.username && this.state.password === this.password.toString()
-
-        if( this.state.login)
-        {
-            console.log("login successful");
-            this.setState({
-                errorDisp: false
-            })
-            window.location.pathname = "/main-page/dashboard"
-            
-        }
-
-        else{
-            console.log("login failed");
-            this.setState({
-                errorDisp: true
-            })
-        }
+                if( this.state.login)
+                {
+                    console.log("login successful");
+                    this.setState({
+                        errorDisp: false
+                    })
+                    window.location.pathname = "/main-page/dashboard"   
+                    
+                }
         
-    }
+                else{
+                    console.log("login failed");
+                    this.setState({
+                        errorDisp: true
+                    })
+                }
+                
+            }
+        
+          );
 
+        }
+       
     render(){
 
         
@@ -76,7 +78,7 @@ class loginForm extends Component{
                 <h1>Sign In</h1>
                 {this.state.errorDisp ? <ErrorMsg message={"wrong username or password"}/> : null}
 
-                <form action="" method="POST" enctype="multipart/form-data" onSubmit={this.onSubmitHandler.bind(this)}>
+                <form onSubmit={this.onSubmitHandler.bind(this)}>
                     <div className="form-group">
                         
                          
