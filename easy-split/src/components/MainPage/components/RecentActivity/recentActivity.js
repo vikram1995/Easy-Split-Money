@@ -9,8 +9,7 @@ class recentActivity extends Component{
     }
 
 
-    render(){
-        
+    componentDidMount(){
         fetch('http://localhost:4000/recent-activity').then(resp=> resp.json())
         .then(data=>{
             //console.log(data);
@@ -18,10 +17,9 @@ class recentActivity extends Component{
             this.setState({activity:data})
             
         });
-    
-       
-    
-        
+    }
+    render(){
+         
       const listItems = this.state.activity.map( (element) => {
       return (<div className="recent-activity-list">
           <p>You {element.task} "{element.description}" {element.type} on {element.date}<br/>{element.day}</p></div>)

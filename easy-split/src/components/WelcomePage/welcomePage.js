@@ -11,13 +11,21 @@ import MainPage from '../MainPage/MainPage';
 
 class WelcomePage extends Component {
  
+    state={
+        signUpStatus : false
+    }
+
+    updateSignUpStatus(status){
+        this.setState({signUpStatus:status});
+        console.log(this.state.signUpStatus);
+    }
 
     path = window.location.pathname
     
    pageToRender = {
         "/": <HomePage />,
         "/login" : <LoginForm />,
-        "/signUp" : <SignUpForm />,
+        "/signUp" : <SignUpForm  signUpStatus = {this.updateSignUpStatus.bind(this)}/>,
         "/main-page": <MainPage/>,
         "/main-page/dashboard":<MainPage/>,
         "/main-page/recent-activity":<MainPage/>,

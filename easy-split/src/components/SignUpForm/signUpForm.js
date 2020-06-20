@@ -12,10 +12,12 @@ state ={
     rePassword:"",  
     dateOfBirth:"",
     gender:"",
-    passwordMismatch: false
+    passwordMismatch: false,
+    DisplaysignUpErrorMsg:false,
+    signUpErrorMsg:null
 }
 
-userDataBase = [];
+userDataBase;
 
 onChangehandler(event)
 {
@@ -37,14 +39,14 @@ onSubmitHandler(event){
         
         this.setState({passwordMismatch:false});
 
-        this.userDataBase.push({
+        this.userDataBase = {
             firstName:this.state.firstName,
             lastName:this.state.lastName,
             userName:this.state.userName,
             password:this.state.password,
             dateOfBirth:this.state.dateOfBirth,
             gender:this.state.gender
-        });
+        };
         console.log(this.userDataBase);
         this.setState({
             firstName:"",
@@ -55,9 +57,41 @@ onSubmitHandler(event){
             dateOfBirth:"",
             gender:""
         });
+
+        fetch('http://localhost:4000/signUp',{
+            method: 'POST',
+            headers: { 
+                "Content-type": "application/json; charset=UTF-8"
+            } ,
+            
+            body: JSON.stringify(
+                 this.userDataBase
+            )
+        }).then(res=>res.json()).then(res=>{
+            if(res.signUp === true){
+                alert("sign Up sucessful !!")
+                
+                window.location.pathname = "/";
+                this.setState({
+                    DisplaysignUpErrorMsg:false
+                })
+            }
+            else if(res.signUp === false){
+                this.setState({
+                    signUpErrorMsg: true,
+                    DisplaysignUpErrorMsg:true
+                })
+            }
+            else if(res.signUp === "user already present"){
+                this.setState({
+                    signUpErrorMsg: false,
+                    DisplaysignUpErrorMsg:true
+                })
+            }
+            
+        })
         
-        window.location.pathname = "/"
-        alert("All saved successfully !")
+      
     }
 
     
@@ -71,6 +105,7 @@ onSubmitHandler(event){
                 <div className="form-container">
                     <h1>Create a new account</h1>
                     <h4>It's quick and easy. </h4>
+                    {this.state.DisplaysignUpErrorMsg ? this.state.signUpErrorMsg ? <ErrorMsg message={"error occour while sign up try again"}/>:<ErrorMsg message={"user already present try with different user name"}/>:null}
                     {this.state.passwordMismatch ? <ErrorMsg message={"Password dose not match re-enter password"}/> : null}
                     <form action="" method="" onSubmit={this.onSubmitHandler.bind(this)}>
                         <div className="form-group">

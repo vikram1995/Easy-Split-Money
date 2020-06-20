@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import ErrorMsg from '../errorMsg/errorMsg';
+import data from '../test.json';
 
 
 class loginForm extends Component{
@@ -11,13 +12,9 @@ class loginForm extends Component{
         login:false
         
     }
-
-
-    username = "vikram";
-    password = "123";
     
     handleChange(event){
-        
+        console.log("onChange trigger");
       this.setState({
           [event.target.id] : event.target.value
           
@@ -26,10 +23,15 @@ class loginForm extends Component{
     }
 
     
+    
 
     onSubmitHandler(event){
         event.preventDefault();
-
+        data.push(JSON.stringify({
+          name:"rahul",
+          password: "123"  
+        }))
+        console.log(data);
         fetch('http://localhost:4000/login',{
                 method: 'POST',
                 headers: { 
@@ -50,7 +52,7 @@ class loginForm extends Component{
                     this.setState({
                         errorDisp: false
                     })
-                    window.location.pathname = "/main-page/dashboard"
+                    window.location.pathname = "/main-page/dashboard"   
                     
                 }
         

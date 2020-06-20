@@ -127,7 +127,9 @@
 /*-------------------Menu section start--------------------------*/
 
 
-
+.add{
+    cursor: pointer;
+}
 
 .menu{
     width: 25%;
