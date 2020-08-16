@@ -9,23 +9,23 @@ For Backend : Node.js and Express.js
 Back-End gitHub link: https://github.com/vikram1995/splitwise-backend
 
 Welcome page : Has two button signIn and signUp
-![](welcomePage.png)
+![](images/welcomePage.png)
 
 SignUp Form : Has password match check and no duplicate user check
-![](SignUpForm.png)
+![](images/SignUpForm.png)
 
-![](userAlreadyPresent.png)
+![](images/userAlreadyPresent.png)
 
-![](passwordMismatch.png)
+![](images/passwordMismatch.png)
 
-Login page: ![](signIn.png)
+Login page: ![](images/signIn.png)
 
-Dashboard : ![](dashboard.png)
+Dashboard : ![](images/dashboard.png)
 
-Add Friend : ![](addFriend.png)
+Add Friend : ![](images/addFriend.png)
 
-Add Expense : ![](addExpense.png)
+Add Expense : ![](images/addExpense.png)
 
-SettelUp : ![](settelUp.png)
+SettelUp : ![](images/settelUp.png)
 
 
