@@ -12,12 +12,13 @@ class mainContent extends Component{
     path = window.location.pathname
 
     pageToRender = {
-         "/main-page/dashboard": <Dashboard />,
+         "/main-page/dashboard": <Dashboard  />,
          "/main-page/recent-activity" : <RecentActivity />,
          "/main-page/expenses": <Expences/>
          
     }
 
+    
     
     render(){
         return( 

@@ -27,11 +27,11 @@ class loginForm extends Component{
 
     onSubmitHandler(event){
         event.preventDefault();
-        data.push(JSON.stringify({
-          name:"rahul",
-          password: "123"  
-        }))
-        console.log(data);
+        // data.push(JSON.stringify({
+        //   name:"rahul",
+        //   password: "123"  
+        // }))
+        // console.log(data);
         fetch('http://localhost:4000/login',{
                 method: 'POST',
                 headers: { 
@@ -46,6 +46,7 @@ class loginForm extends Component{
                 )
             }).then(resp=> resp.json()).then(data=>{
                 this.setState({login:data.login});
+                console.log(data.login)
                 if( this.state.login)
                 {
                     console.log("login successful");

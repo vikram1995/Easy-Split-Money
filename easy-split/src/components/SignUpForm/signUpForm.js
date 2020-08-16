@@ -28,6 +28,8 @@ onChangehandler(event)
 
 onSubmitHandler(event){
     event.preventDefault();
+    this.setState({DisplaysignUpErrorMsg:false})
+
     if(this.state.password !== this.state.rePassword){
         this.setState({passwordMismatch:true,
                         password:"",

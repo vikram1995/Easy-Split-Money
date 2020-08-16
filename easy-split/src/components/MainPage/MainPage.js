@@ -8,6 +8,7 @@ import MainContent from './mainContent';
 
 class MainPage extends Component{
 
+   
 
     
 
@@ -15,8 +16,8 @@ class MainPage extends Component{
         return(<div>
                      <div className="content-wrapper container-fluid">
             
-                        <Menu/>
-                        <MainContent/>
+                        <Menu />
+                        <MainContent />
                         <Update/>
 
                         

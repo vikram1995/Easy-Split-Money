@@ -21,6 +21,7 @@ class dashboard extends Component {
      
     owedMember = Object.keys(this.state.owed);
     oweMember = Object.keys(this.state.owe); 
+
     
     calculate= () =>{
          let owedAmount=0;
@@ -148,8 +149,8 @@ class dashboard extends Component {
                 </div>
 
                 
-            <AddExpense  handleShow={this.handleAddExpShow.bind(this)} handleClose={this.handleAddExpClose.bind(this)} show={this.state.addExp} changeState={this.updateThestate.bind(this)}/>
-            <SettelUp handleShow={this.handleSettelUpShow.bind(this)} handleClose={this.handleSettelUpClose.bind(this)} show={this.state.settelUp} changeState={this.updateThestate.bind(this)}/>
+            <AddExpense  handleShow={this.handleAddExpShow.bind(this)} handleClose={this.handleAddExpClose.bind(this)} show={this.state.addExp} changeState={this.updateThestate.bind(this)} dosePropChanged={this.state.addExp}/>
+            <SettelUp handleShow={this.handleSettelUpShow.bind(this)} handleClose={this.handleSettelUpClose.bind(this)} show={this.state.settelUp} changeState={this.updateThestate.bind(this)} dosePropChanged={this.state.addExp}/>
             
             </div>
         )
