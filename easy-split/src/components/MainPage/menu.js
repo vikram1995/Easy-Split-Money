@@ -16,7 +16,7 @@ state = {
      changeState(){
          let stateChange = !this.state.stateChange
          this.setState({stateChange: stateChange});
-         alert("state is changed");
+         //alert("state is changed");
      }
 
      componentDidUpdate(prevProps,prevState){
@@ -34,7 +34,9 @@ state = {
                 
                 this.setState({friends:data})
                 
-            });   
+            });
+            
+            //this.props.changeParentState();
          }
      }
 

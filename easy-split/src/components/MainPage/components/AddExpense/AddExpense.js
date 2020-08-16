@@ -73,6 +73,17 @@ componentDidMount(){
         this.setState({friends:data})
         });
 }
+
+componentDidUpdate(prevProps,prevState){
+    if(prevProps.dosePropChanged !== this.props.dosePropChanged){
+        
+        fetch('http://localhost:4000/friends').then(resp=> resp.json())
+        .then(data=>{
+        
+        this.setState({friends:data})
+        });
+    }
+}
    
 
     render(){

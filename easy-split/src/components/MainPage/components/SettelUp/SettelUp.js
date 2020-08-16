@@ -18,7 +18,7 @@ class SettelUp extends Component{
     }
 
     onSubmitHandler(){
-        console.log("onsubmit called")
+       // console.log("onsubmit called")
         fetch('http://localhost:4000/settelUp',{
             method:'POST',
             headers:{ 
@@ -58,6 +58,29 @@ class SettelUp extends Component{
                  })
             }
         )
+    }
+
+    componentDidUpdate(prevProps,prevState){
+        if(prevProps.dosePropChanged !== this.props.dosePropChanged){
+            
+            fetch('http://localhost:4000/friends').then(resp=> resp.json())
+        .then(data=>{
+            
+            this.setState({friends:data})
+            
+        });
+
+        fetch('http://localhost:4000/transition-details').then(resp=> resp.json()).then(
+            data=>{
+                console.log(data.total);
+            
+                this.setState({
+                    balanceSheet:data.total
+
+                 })
+            }
+        )
+        }
     }
 
     render(){
